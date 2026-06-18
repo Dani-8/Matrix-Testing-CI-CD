@@ -1,5 +1,21 @@
 name: Node.js CI Matrix Pipeline
 
-on: 
-   push:
-     branches: [main]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test on Node.js v${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      # Matrix testing setup across multiple environments
+      matrix:
+        node-version:
+          [16.x, 18.x, 20.x, 22.x]
+
+      # Set to false so one failing version doesn't immediately cancel other jobs
+      fail-fast: false
