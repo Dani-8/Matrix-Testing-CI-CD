@@ -11,16 +11,15 @@ jobs:
     name: Test on Node.js v${{ matrix.node-version }}
     runs-on: ubuntu-latest
 
-
+    
     strategy:
       # Runs tests on multiple Node.js versions to catch compatibility issues early
       matrix:
-        node-version: [16.x, 18.x, 20.x, 22.x]
-
+        node-version: [18.x, 20.x, 22.x, 24.x]
       # If one version fails, others still continue running (important for full results)
       fail-fast: false
 
-
+      
     steps:
       - name: Checkout Repository Code
         # Downloads your code into the GitHub Actions runner
@@ -31,12 +30,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          # "cache": if it's the first time it will install npm packages, 
+          # "cache": if it's the first time it will install npm packages,
           # then avoid re-installing them again from scratch each time, improving speed
           cache: "npm"
           # Specifies the path to the package-lock.json file for caching dependencies
           cache-dependency-path: backend/package-lock.json
-
 
       - name: Install Dependencies
         # Installs project packages inside backend folder
