@@ -11,6 +11,7 @@ jobs:
     name: Test on Node.js v${{ matrix.node-version }}
     runs-on: ubuntu-latest
 
+
     strategy:
       # Runs tests on multiple Node.js versions to catch compatibility issues early
       matrix:
@@ -18,6 +19,7 @@ jobs:
 
       # If one version fails, others still continue running (important for full results)
       fail-fast: false
+
 
     steps:
       - name: Checkout Repository Code
@@ -29,9 +31,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-          # Speeds up builds by caching installed npm packages
+          # "cache": if it's the first time it will install npm packages, 
+          # then avoid re-installing them again from scratch each time, improving speed
           cache: "npm"
+          # Specifies the path to the package-lock.json file for caching dependencies
+          cache-dependency-path: backend/package-lock.json
+
 
       - name: Install Dependencies
         # Installs project packages inside backend folder
