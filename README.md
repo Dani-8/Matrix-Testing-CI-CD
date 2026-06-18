@@ -91,7 +91,7 @@ backend/
 ├─ server.test.js            # Jest / Supertest test suite
 ├─ package.json              # Project dependencies and scripts
 ├─ package-lock.json         # Lockfile for reproducible installs
-└─ Dockerfile                   # Multi-stage production build specification
+└─ Dockerfile                # Multi-stage production build specification
 ```
 
 ---
