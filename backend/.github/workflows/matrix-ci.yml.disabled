@@ -12,30 +12,33 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      # Matrix testing setup across multiple environments
+      # Runs tests on multiple Node.js versions to catch compatibility issues early
       matrix:
-        node-version:
-          [16.x, 18.x, 20.x, 22.x]
+        node-version: [16.x, 18.x, 20.x, 22.x]
 
-      # Set to false so one failing version doesn't immediately cancel other jobs
+      # If one version fails, others still continue running (important for full results)
       fail-fast: false
-
 
     steps:
       - name: Checkout Repository Code
+        # Downloads your code into the GitHub Actions runner
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js Environment (v${{ matrix.node-version }})
+        # Installs the correct Node.js version for each matrix run
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          # "cache" on first time it will install npm packages, and avoid installing them again from scratch each time, improving speed
-          cache: 'npm'
+
+          # Speeds up builds by caching installed npm packages
+          cache: "npm"
 
       - name: Install Dependencies
+        # Installs project packages inside backend folder
         run: npm ci
         working-directory: ./backend
 
       - name: Run Jest Test Suite
+        # Runs your test cases using Jest
         run: npm test
         working-directory: ./backend
