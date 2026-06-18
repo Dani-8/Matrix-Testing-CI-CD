@@ -1,0 +1,5 @@
+name: Node.js CI Matrix Pipeline
+
+on: 
+   push:
+     branches: [main]
