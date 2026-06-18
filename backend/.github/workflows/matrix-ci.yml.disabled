@@ -19,3 +19,15 @@ jobs:
 
       # Set to false so one failing version doesn't immediately cancel other jobs
       fail-fast: false
+
+
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js Environment (v${{ matrix.node-version }})
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          # "cache" on first time it will install npm packages, and avoid installing them again from scratch each time, improving speed
+          cache: 'npm'
