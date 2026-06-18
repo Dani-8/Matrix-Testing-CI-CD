@@ -11,8 +11,8 @@ A production-ready backend Node.js service showcasing a **GitHub Actions matrix 
                                         │
                                         ▼
                         ┌───────────────────────────────┐
-                        │    GitHub Actions Pipeline     │
-                        │       (ci.yml workflow)        │
+                        │    GitHub Actions Pipeline    │
+                        │       (ci.yml workflow)       │
                         └───────────────┬───────────────┘
                                         │
                                  Matrix Strategy
@@ -25,8 +25,8 @@ A production-ready backend Node.js service showcasing a **GitHub Actions matrix 
     │ Node v18.x   │ │ Node v20.x   │     │ Node v22.x   │ │ Node v24.x   │
     │    (LTS)     │ │    (LTS)     │     │  (Current)   │ │   (Latest)   │
     ├──────────────┤ ├──────────────┤     ├──────────────┤ ├──────────────┤
-    │ ✔ npm ci     │ │ ✔ npm ci     │     │ ✔ npm ci     │ │ ✔ npm ci     │
-    │ ✔ Jest Suite │ │ ✔ Jest Suite │     │ ✔ Jest Suite │ │ ✔ Jest Suite │
+    │ ✔ npm ci     │ │ ✔ npm ci     │    │ ✔ npm ci     │ │ ✔ npm ci     │
+    │ ✔ Jest Suite │ │ ✔ Jest Suite │    │ ✔ Jest Suite │ │ ✔ Jest Suite │
     └──────────────┘ └──────────────┘     └──────────────┘ └──────────────┘
              │              │                       │              │
              └──────────────┴───────────┬───────────┴──────────────┘
